@@ -1,899 +1,143 @@
 <!DOCTYPE html>
- <title>Nathan Zhang</title>
+<html>
+<html lang="en">
+<head>
+<title>WEBSITE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathan Zhang</title>
   <style>
     :root {
-      --bg: #f6f0e8;
-      --paper: rgba(255, 251, 245, 0.82);
-      --panel: rgba(255, 255, 255, 0.72);
-      --ink: #172126;
-      --muted: #5f6a70;
-      --line: rgba(23, 33, 38, 0.1);
-      --teal: #0e6f72;
-      --gold: #d9a33f;
-      --sea: #d8ece8;
-      --clay: #efe0cd;
-      --shadow: 0 24px 70px rgba(23, 33, 38, 0.12);
-      --bg: #061116;
-      --bg-alt: #0b1d24;
-      --panel: rgba(10, 24, 31, 0.72);
-      --panel-strong: rgba(13, 31, 40, 0.88);
-      --text: #f3f8fb;
-      --muted: #9db2bc;
-      --line: rgba(168, 223, 233, 0.16);
-      --cyan: #7ce7f2;
-      --blue: #49a7ff;
-      --gold: #ffc857;
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --bg: #f4efe6;
+      --card: rgba(255, 252, 247, 0.9);
+      --text: #1f2a2e;
+      --accent: #0f6b6f;
+      --accent-dark: #0a4f52;
+      --border: rgba(15, 107, 111, 0.18);
+      --shadow: 0 24px 60px rgba(31, 42, 46, 0.12);
     }
 
     * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
-      color: var(--ink);
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(14, 111, 114, 0.15), transparent 26%),
-        radial-gradient(circle at 85% 12%, rgba(217, 163, 63, 0.18), transparent 18%),
-        linear-gradient(140deg, #fbf7f1 0%, var(--bg) 48%, #efe6da 100%);
-      padding: 24px;
-        radial-gradient(circle at 20% 20%, rgba(73, 167, 255, 0.14), transparent 24%),
-        radial-gradient(circle at 80% 0%, rgba(124, 231, 242, 0.11), transparent 26%),
-        linear-gradient(180deg, #041015 0%, var(--bg) 40%, var(--bg-alt) 100%);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 95%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .shell {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      background: var(--paper);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      backdrop-filter: blur(14px);
-    a {
-      color: var(--cyan);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
-    }
-
-    .topbar {
-    .nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 20;
-      width: min(960px, calc(100% - 24px));
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 22px 28px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.42);
-      gap: 18px;
-      padding: 14px 18px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(4, 16, 21, 0.68);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-    }
-
-    .brand {
-      margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-    .nav strong {
-      font-size: 0.95rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    nav {
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      gap: 16px;
-    }
-
-    nav a {
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.96rem;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    nav a:hover,
-    nav a:focus-visible,
-    .link:hover,
-    .link:focus-visible {
-      color: var(--teal);
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
       color: var(--text);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 28px;
-      padding: 34px 28px 18px;
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    .section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 110px 24px 64px;
-    }
-
-    .hero-copy {
-      padding: 14px 4px 0;
-    .panel {
-      width: min(1120px, 100%);
-      border-radius: 34px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      transform: perspective(1200px) translateY(70px) scale(0.93) rotateX(10deg);
-      opacity: 0;
-      transition:
-        transform 700ms cubic-bezier(0.2, 1, 0.22, 1),
-        opacity 700ms ease,
-        box-shadow 700ms ease;
-    }
-
-    .panel.visible {
-      opacity: 1;
-      transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
-      box-shadow: 0 42px 110px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-panel {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      padding: 42px;
       background:
-        radial-gradient(circle at top right, rgba(73, 167, 255, 0.14), transparent 28%),
-        linear-gradient(160deg, rgba(8, 21, 28, 0.92), rgba(11, 29, 36, 0.86));
+        radial-gradient(circle at top left, rgba(15, 107, 111, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(218, 167, 84, 0.2), transparent 28%),
+        linear-gradient(135deg, #f8f4ed, var(--bg));
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      padding: 10px 14px;
-      border: 1px solid rgba(124, 231, 242, 0.18);
-      border-radius: 999px;
-      background: rgba(14, 111, 114, 0.09);
-      color: var(--teal);
-      font-size: 0.9rem;
-      color: var(--cyan);
-      background: rgba(124, 231, 242, 0.08);
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .card {
+      width: min(760px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 40px 28px;
+      backdrop-filter: blur(6px);
     }
 
     h1 {
-      margin: 20px 0 16px;
-    h1, h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 8vw, 5.8rem);
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 0.95;
       letter-spacing: -0.04em;
     }
 
-    h1 {
-      margin-top: 20px;
-      font-size: clamp(3.6rem, 10vw, 6.8rem);
-      line-height: 0.92;
-      letter-spacing: -0.05em;
+    .subtitle {
+      margin: 0 0 28px;
+      font-size: 1.1rem;
+      color: #44555b;
     }
 
-    .lead {
-      max-width: 620px;
-      margin: 0;
-      margin: 22px 0 0;
-      max-width: 640px;
-      color: var(--muted);
-      font-size: 1.14rem;
-      font-size: 1.15rem;
-      line-height: 1.85;
+    p {
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+      line-height: 1.75;
     }
 
-    .actions {
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-      margin-top: 30px;
+    strong {
+      color: var(--accent-dark);
     }
 
-    .button,
-    .link {
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 999px;
-      padding: 13px 18px;
-      border: 1px solid transparent;
-      text-decoration: none;
-      font-weight: 800;
-      transition: transform 180ms ease, box-shadow 180ms ease, color 180ms ease;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-    }
-
-    .button {
-      background: var(--ink);
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(23, 33, 38, 0.18);
-    .button.primary {
-      color: #041015;
-      background: linear-gradient(135deg, var(--cyan), #b5f9ff);
-    }
-
-    .link {
-      color: var(--ink);
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.52);
-    .button.secondary {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.03);
-      border-color: var(--line);
-    }
-
-    .button:hover,
-    .button:focus-visible,
-    .link:hover,
-    .link:focus-visible {
-    .button:focus-visible {
-      transform: translateY(-2px);
-    }
-
-    .hero-art {
-      position: relative;
-      min-height: 420px;
-      border-radius: 28px;
-      overflow: hidden;
-    .hero-side {
-      display: grid;
-      gap: 16px;
-    }
-
-    .stat,
-    .mini-card {
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 22px;
-    }
-
-    .stat {
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2)),
-        linear-gradient(160deg, #dcedeb 0%, #f8efe2 45%, #ebd9c1 100%);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-        radial-gradient(circle at top left, rgba(255, 200, 87, 0.2), transparent 38%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-    }
-
-    .shape {
-      position: absolute;
-      border-radius: 999px;
-      opacity: 0.96;
-    .stat span {
-      color: var(--gold);
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .shape.one {
-      inset: 38px auto auto 34px;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(145deg, rgba(14, 111, 114, 0.95), rgba(83, 162, 159, 0.85));
-    .stat strong {
-      margin-top: 12px;
-      font-size: clamp(1.7rem, 3vw, 2.6rem);
-      line-height: 1.15;
-    }
-
-    .shape.two {
-      right: 26px;
-      top: 52px;
-      width: 132px;
-      height: 132px;
-      background: linear-gradient(145deg, rgba(217, 163, 63, 0.92), rgba(242, 205, 135, 0.8));
-    .mini-card {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .shape.three {
-      left: 88px;
-      bottom: 36px;
-      width: 246px;
-      height: 112px;
-      border-radius: 36px;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    .section-panel {
-      padding: 36px;
-      background: var(--panel-strong);
-    }
-
-    .shape.three span:first-child {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--teal);
-      font-weight: 800;
-      margin-bottom: 8px;
-    .section-header {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 24px;
-    }
-
-    .shape.three span:last-child {
-      font-size: 1.02rem;
-      line-height: 1.5;
-      color: var(--ink);
+    a {
+      color: var(--accent);
       font-weight: 700;
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.04rem;
-    }
-
-    .shape.four {
-      right: 34px;
-      bottom: 28px;
-      width: 128px;
-      height: 168px;
-      border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38)),
-        repeating-linear-gradient(
-          180deg,
-          transparent 0 22px,
-          rgba(23, 33, 38, 0.06) 22px 23px
-        );
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    h2 {
-      font-size: clamp(2.3rem, 6vw, 4.2rem);
-      line-height: 0.96;
-    }
-
-    .grid {
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      padding: 18px 28px 32px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: 24px;
-    .card {
-      padding: 24px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      min-height: 220px;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
-      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: auto -20% -35% auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124, 231, 242, 0.18), transparent 68%);
-      pointer-events: none;
-    }
-
-    .panel h2 {
-      margin: 0 0 16px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
-    .card:hover,
-    .card:focus-within {
-      transform: translateY(-6px);
-      border-color: rgba(124, 231, 242, 0.32);
-      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
-    }
-
-    .panel p {
-    .card small {
-      display: inline-block;
-      color: var(--cyan);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.45rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.03rem;
-    }
-
-    .hobby-grid {
-    .school-layout {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .hobby {
-      padding: 18px;
-      border-radius: 20px;
-      min-height: 118px;
-      border: 1px solid rgba(23, 33, 38, 0.07);
-    .school-card,
-    .contact-card {
-      padding: 28px;
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
-    }
-
-    .hobby:nth-child(1) { background: var(--sea); }
-    .hobby:nth-child(2) { background: #f7ead6; }
-    .hobby:nth-child(3) { background: #dce6f7; }
-    .hobby:nth-child(4) { background: var(--clay); }
-
-    .hobby strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      letter-spacing: 0.01em;
-    .school-card p,
-    .contact-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    .hobby span {
-      color: #435158;
-      line-height: 1.6;
-      font-size: 0.96rem;
-    .school-card h3,
-    .contact-card h3 {
-      margin: 0 0 14px;
-      font-size: 1.5rem;
-    }
-
-    .contact-card {
-    .contact-list {
-      display: grid;
-      gap: 16px;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(23, 33, 38, 0.07);
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .icon {
-      width: 42px;
-      height: 42px;
-      flex: 0 0 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.15rem;
-      background: rgba(14, 111, 114, 0.1);
-    }
-
-    .contact-row strong,
-    .contact-row a {
-    .contact-row strong {
-      display: block;
-    }
-
-    .contact-row strong {
-      margin-bottom: 5px;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .contact-row a {
-      color: var(--teal);
-      word-break: break-word;
-      font-weight: 800;
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
-      word-break: break-word;
     }
 
-    footer {
-      padding: 0 28px 28px;
-      color: #6b757a;
-      font-size: 0.95rem;
-    .scroll-note {
-      position: absolute;
-      left: 24px;
-      bottom: 22px;
-      color: rgba(243, 248, 251, 0.6);
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .hobbies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 24px 0 28px;
+      padding: 0;
+      list-style: none;
     }
 
-    @media (max-width: 920px) {
-      .hero,
-      .grid {
-    @media (max-width: 900px) {
-      .hero-panel,
-      .section-header,
-      .school-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-art {
-        min-height: 340px;
-      .cards {
-        grid-template-columns: 1fr;
-      }
+    .hobbies li {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-dark);
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding: 12px;
-      }
-
-      .topbar,
-      .hero,
-      .grid,
-      footer {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .topbar {
-    @media (max-width: 720px) {
-      .nav {
-        width: calc(100% - 16px);
-        padding: 12px 14px;
-        border-radius: 22px;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      h1 {
-        font-size: 3rem;
-      }
-
-      .hobby-grid {
-        grid-template-columns: 1fr;
-      .section {
-        padding: 110px 12px 40px;
-      }
-
-      .shape.one {
-        width: 156px;
-        height: 156px;
-      .hero-panel,
-      .section-panel {
-        padding: 24px;
-      }
-
-      .shape.three {
-        left: 24px;
-        right: 24px;
-        width: auto;
-      h1 {
-        font-size: 3.4rem;
-      }
+    .footer {
+      margin-top: 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.98rem;
+      color: #52646a;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <p class="brand">Nathan Zhang</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#school">School</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-  <header class="nav">
-    <strong>Nathan Zhang</strong>
-    <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#hobbies">Hobbies</a>
-      <a href="#school">School</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<h1>HELL0</h1>
+<p>Hello, world.</p>
+</body> 
+  <main class="card">
+    <p class="subtitle">Personal introduction</p>
+    <h1>Nathan Zhang</h1>
 
-  <main>
-    <section class="section" id="home">
-      <div class="panel hero-panel reveal visible">
-        <div>
-          <div class="eyebrow">Student • Athlete • Explorer</div>
-          <h1>Hi, I’m Nathan Zhang.</h1>
-          <p class="lead">
-            I’m a student who loves being active, learning new things, and pushing myself through
-            sports and challenges. My interests take me from the pool to the soccer field, from
-            sailing on the water to playing hockey on the ice.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#contact">Reach Out</a>
-            <a class="button secondary" href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School</a>
-          </div>
-        </div>
+    <p>
+      Hi, I’m <strong>Nathan Zhang</strong>. I’m a student at
+      <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
+      and I enjoy staying active, trying new challenges, and spending time outdoors.
+    </p>
 
-    <section class="hero" id="about">
-      <div class="hero-copy">
-        <div class="eyebrow">Student • Athlete • Explorer</div>
-        <h1>Hi, I’m Nathan Zhang.</h1>
-        <p class="lead">
-          I’m a student who enjoys staying active, working hard, and spending time doing the things
-          I love most. Whether I’m in the pool, on the field, out on the water, or on the ice, I like
-          challenges that help me grow and keep life exciting.
-        </p>
-        <div class="actions">
-          <a class="button" href="#contact">Reach Out</a>
-          <a class="link" href="https://www.shs.org/" target="_blank" rel="noreferrer">Visit My School</a>
-        <div class="hero-side">
-          <div class="stat">
-            <span>Current Focus</span>
-            <strong>Building skills, staying active, and enjoying every challenge.</strong>
-          </div>
-          <div class="mini-card">
-            I go to <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
-            where I continue to learn, grow, and explore what I care about most.
-          </div>
-        </div>
-        <div class="scroll-note">Scroll to see more</div>
-      </div>
-    </section>
+    <p>
+      Some of my favorite hobbies are swimming, playing soccer, sailing, and hockey.
+      Each one gives me a different way to learn, compete, and have fun.
+    </p>
 
-      <div class="hero-art" aria-hidden="true">
-        <div class="shape one"></div>
-        <div class="shape two"></div>
-        <div class="shape three">
-          <span>Currently</span>
-          <span>Studying at Shady Hill School in Cambridge, Massachusetts</span>
-    <section class="section" id="hobbies">
-      <div class="panel section-panel reveal">
-        <div class="section-header">
-          <h2>What I Love Doing</h2>
-          <p>
-            These hobbies each bring a different kind of energy into my life. Together they help me
-            stay disciplined, adventurous, competitive, and connected with other people.
-          </p>
-        </div>
-        <div class="shape four"></div>
+    <ul class="hobbies">
+      <li>Swimming</li>
+      <li>Soccer</li>
+      <li>Sailing</li>
+      <li>Hockey</li>
+    </ul>
 
-        <div class="cards">
-          <article class="card">
-            <small>01</small>
-            <h3>Swimming</h3>
-            <p>Swimming teaches focus and consistency, and I enjoy the feeling of improving through practice and effort.</p>
-          </article>
-          <article class="card">
-            <small>02</small>
-            <h3>Soccer</h3>
-            <p>Soccer is one of my favorite team sports because it combines speed, strategy, and teamwork.</p>
-          </article>
-          <article class="card">
-            <small>03</small>
-            <h3>Sailing</h3>
-            <p>Sailing gives me a chance to think, adapt, and enjoy being outdoors while working with the wind and water.</p>
-          </article>
-          <article class="card">
-            <small>04</small>
-            <h3>Hockey</h3>
-            <p>Hockey is fast, exciting, and intense, and I love the energy that comes with playing on the ice.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <p>
+      If you’d like to reach out to me, feel free to send me an email at
+      <a href="mailto:nathan@example.com">nathan@example.com</a>.
+    </p>
 
-    <section class="grid">
-      <article class="panel" id="hobbies">
-        <h2>What I’m Into</h2>
-        <p>
-          My hobbies say a lot about me. I like sports and activities that build endurance, teamwork,
-          focus, and confidence, and each one brings something different to my life.
-        </p>
-        <div class="hobby-grid">
-          <div class="hobby">
-            <strong>Swimming</strong>
-            <span>I enjoy the speed, discipline, and steady improvement that comes with time in the water.</span>
-          </div>
-          <div class="hobby">
-            <strong>Soccer</strong>
-            <span>Playing soccer is one of my favorite ways to compete, move fast, and work with a team.</span>
-          </div>
-          <div class="hobby">
-            <strong>Sailing</strong>
-            <span>Sailing gives me a chance to be outdoors, think strategically, and stay connected to nature.</span>
-          </div>
-          <div class="hobby">
-            <strong>Hockey</strong>
-            <span>Hockey is exciting, intense, and a great way to push myself while having fun.</span>
-          </div>
-    <section class="section" id="school">
-      <div class="panel section-panel reveal">
-        <div class="section-header">
-          <h2>School & Community</h2>
-          <p>
-            School is a big part of who I am. It’s where I learn new ideas, build friendships, and
-            keep growing both in and out of the classroom.
-          </p>
-        </div>
-      </article>
-
-      <article class="panel" id="school">
-        <h2>School & Contact</h2>
-        <p>
-          I go to
-          <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>.
-          It’s an important part of my life and a place where I learn, grow, and connect with my community.
-        </p>
-        <div class="contact-card" id="contact">
-          <div class="contact-row">
-            <div class="icon">✉</div>
-            <div>
-              <strong>Email</strong>
-              <a href="mailto:nathan@example.com">nathan@example.com</a>
-            </div>
-          </div>
-          <div class="contact-row">
-            <div class="icon">⌂</div>
-            <div>
-              <strong>School Website</strong>
-              <a href="https://www.shs.org/" target="_blank" rel="noreferrer">www.shs.org</a>
-        <div class="school-layout">
-          <article class="school-card">
-            <h3>Shady Hill School</h3>
-            <p>
-              I attend <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>.
-              It’s a place that supports curiosity, growth, and community, and it plays an important role in my life.
-            </p>
-          </article>
-
-          <article class="contact-card" id="contact">
-            <h3>Reach Out</h3>
-            <p>
-              If you want to contact me, the easiest way is by email. You can also visit my school’s website below.
-            </p>
-            <div class="contact-list">
-              <div class="contact-row">
-                <strong>Email</strong>
-                <a href="mailto:nathan@example.com">nathan@example.com</a>
-              </div>
-              <div class="contact-row">
-                <strong>School Website</strong>
-                <a href="https://www.shs.org/" target="_blank" rel="noreferrer">www.shs.org</a>
-              </div>
-            </div>
-          </div>
-          </article>
-        </div>
-      </article>
-      </div>
-    </section>
+    <p class="footer">
+      Thanks for visiting my page and learning a little more about me.
+    </p>
   </main>
-
-    <footer>
-      Built as a personal introduction page for Nathan Zhang.
-    </footer>
-  </div>
-  <script>
-    const panels = document.querySelectorAll(".reveal");
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.2
-    });
-
-    panels.forEach((panel, index) => {
-      if (index === 0) {
-        panel.classList.add("visible");
-        return;
-      }
-      observer.observe(panel);
-    });
-  </script>
-</body>
-</html>
-</div>
 </body>
 </html>
