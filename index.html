@@ -2,132 +2,783 @@
 <html>
 <html lang="en">
 <head>
-<title>WEBSITE</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nathan Zhang</title>
   <style>
     :root {
-      --bg: #f4efe6;
-      --card: rgba(255, 252, 247, 0.9);
-      --text: #1f2a2e;
-      --accent: #0f6b6f;
-      --accent-dark: #0a4f52;
-      --border: rgba(15, 107, 111, 0.18);
-      --shadow: 0 24px 60px rgba(31, 42, 46, 0.12);
+      --bg: #061116;
+      --bg-alt: #0b1d24;
+      --panel: rgba(10, 24, 31, 0.72);
+      --panel-strong: rgba(13, 31, 40, 0.88);
+      --text: #f3f8fb;
+      --muted: #9db2bc;
+      --line: rgba(168, 223, 233, 0.16);
+      --cyan: #7ce7f2;
+      --blue: #49a7ff;
+      --gold: #ffc857;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --bg: #071015;
+      --bg-soft: #0d1820;
+      --panel: #101c24;
+      --text: #eef6fb;
+      --muted: #9eb1bc;
+      --line: rgba(255, 255, 255, 0.09);
+      --accent: #89e6f7;
+      --accent-2: #63a9ff;
+      --glow: rgba(137, 230, 247, 0.22);
+      --shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
     }
 
     * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(15, 107, 111, 0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(218, 167, 84, 0.2), transparent 28%),
-        linear-gradient(135deg, #f8f4ed, var(--bg));
-      display: grid;
-      place-items: center;
-      padding: 32px 16px;
+        radial-gradient(circle at 20% 20%, rgba(73, 167, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 80% 0%, rgba(124, 231, 242, 0.11), transparent 26%),
+        linear-gradient(180deg, #041015 0%, var(--bg) 40%, var(--bg-alt) 100%);
+      overflow-x: hidden;
     }
 
-    .card {
-      width: min(760px, 100%);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 40px 28px;
-      backdrop-filter: blur(6px);
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .subtitle {
-      margin: 0 0 28px;
-      font-size: 1.1rem;
-      color: #44555b;
-    }
-
-    p {
-      margin: 0 0 18px;
-      font-size: 1.08rem;
-      line-height: 1.75;
-    }
-
-    strong {
-      color: var(--accent-dark);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 95%);
+      pointer-events: none;
+      z-index: 0;
+        radial-gradient(circle at top left, rgba(99, 169, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(137, 230, 247, 0.12), transparent 22%),
+        linear-gradient(180deg, #050d12 0%, var(--bg) 45%, var(--bg-soft) 100%);
     }
 
     a {
+      color: var(--cyan);
       color: var(--accent);
-      font-weight: 700;
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
     }
 
-    .hobbies {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin: 24px 0 28px;
-      padding: 0;
-      list-style: none;
+    .page {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
     }
 
-    .hobbies li {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 16px;
-      text-align: center;
-      font-size: 1rem;
+    .nav {
+      position: fixed;
+      position: sticky;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(960px, calc(100% - 24px));
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      padding: 16px 20px;
+      margin-bottom: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(4, 16, 21, 0.68);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      border-radius: 20px;
+      background: rgba(7, 16, 21, 0.8);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .nav strong {
+    .nav-title {
+      margin: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: var(--accent-dark);
+      font-size: 0.92rem;
     }
 
+    .nav-links a:hover,
+      color: var(--text);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 24px 64px;
+    }
+
+    .panel {
+      width: min(1120px, 100%);
+      border-radius: 34px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(16, 28, 36, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      transform: perspective(1200px) translateY(70px) scale(0.93) rotateX(10deg);
+      opacity: 0;
+      transition:
+        transform 700ms cubic-bezier(0.2, 1, 0.22, 1),
+        opacity 700ms ease,
+        box-shadow 700ms ease;
+    }
+
+    .panel.visible {
+      opacity: 1;
+      transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+      box-shadow: 0 42px 110px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-panel {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      padding: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(73, 167, 255, 0.14), transparent 28%),
+        linear-gradient(160deg, rgba(8, 21, 28, 0.92), rgba(11, 29, 36, 0.86));
+    .hero-main {
+      padding: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(124, 231, 242, 0.18);
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(124, 231, 242, 0.08);
+      font-size: 0.88rem;
+      background: rgba(137, 230, 247, 0.08);
+      border: 1px solid rgba(137, 230, 247, 0.14);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: clamp(3.6rem, 10vw, 6.8rem);
+      line-height: 0.92;
+      margin-top: 18px;
+      font-size: clamp(3.2rem, 8vw, 5.8rem);
+      line-height: 0.94;
+    }
+
+    .lead {
+      margin: 22px 0 0;
+      max-width: 640px;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      font-size: 1.1rem;
+      line-height: 1.85;
+    }
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .button.primary {
+      color: #041015;
+      background: linear-gradient(135deg, var(--cyan), #b5f9ff);
+      background: linear-gradient(135deg, var(--accent), #d8fbff);
+      box-shadow: 0 10px 30px var(--glow);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--line);
+    }
+
+    .button:hover,
+    .hero-side {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(99, 169, 255, 0.16), transparent 30%),
+        rgba(16, 28, 36, 0.82);
+    }
+
+    .stat,
+    .mini-card {
+      border-radius: 26px;
+    .side-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 22px;
+      border-radius: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .stat {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        radial-gradient(circle at top left, rgba(255, 200, 87, 0.2), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    }
+
+    .stat span {
+      color: var(--gold);
+      font-size: 0.85rem;
+    .side-card small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      margin-top: 12px;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.15;
+    .side-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .mini-card {
+      color: var(--muted);
+      line-height: 1.7;
+    .section {
+      padding: 34px;
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .section-panel {
+      padding: 36px;
+      background: var(--panel-strong);
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.04rem;
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 6vw, 4.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 0.96;
+    }
+
+    .cards {
+    .hobby-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 26px;
+    .hobby {
+      padding: 22px;
+      border: 1px solid var(--line);
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.025);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 231, 242, 0.18), transparent 68%);
+      pointer-events: none;
+    .hobby:hover,
+    .hobby:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(137, 230, 247, 0.28);
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(124, 231, 242, 0.32);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+    }
+
+    .card small {
+    .hobby small {
+      display: inline-block;
+      color: var(--cyan);
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+    .hobby h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+    .hobby p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .school-layout {
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      gap: 16px;
+    }
+
+    .school-card,
+    .contact-card {
+      padding: 28px;
+      border-radius: 28px;
+    .contact-box {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .school-card p,
+    .contact-card p {
+    .contact-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .school-card h3,
+    .contact-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.5rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+      line-height: 1.8;
+    }
+
+    .contact-row {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+    .contact-box h3 {
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .contact-row strong {
+      display: block;
+      margin-bottom: 8px;
     .footer {
-      margin-top: 10px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 0.98rem;
-      color: #52646a;
+      margin-top: 22px;
+      padding: 10px 4px 0;
+      color: #7f929d;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .contact-row a {
+      word-break: break-word;
+      font-weight: 800;
+    }
+
+    .scroll-note {
+      position: absolute;
+      left: 24px;
+      bottom: 22px;
+      color: rgba(243, 248, 251, 0.6);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .hero-panel,
+    @media (max-width: 860px) {
+      .hero,
+      .section-header,
+      .school-layout {
+      .contact-grid,
+      .hobby-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+      .cards {
+        grid-template-columns: 1fr;
+    @media (max-width: 640px) {
+      .page {
+        width: calc(100% - 18px);
+        padding-top: 14px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        width: calc(100% - 16px);
+        padding: 12px 14px;
+        border-radius: 22px;
+        top: 10px;
+        padding: 14px;
+        border-radius: 18px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-main,
+      .section {
+        padding: 110px 12px 40px;
+      }
+
+      .hero-panel,
+      .section-panel {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 3.4rem;
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
 <body>
-<h1>HELLO</h1>
-</body> 
-  <main class="card">
-    <h1>Nathan     Zhang</h1>
+  <header class="nav">
+    <strong>Nathan Zhang</strong>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#school">School</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="page">
+    <header class="nav">
+      <p class="nav-title">Nathan Zhang</p>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#school">School</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <p>
-      Hi, I’m <strong>Nathan Zhang</strong>. I’m a student at
-      <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
-      and I enjoy staying active, trying new challenges, and spending time outdoors.
-    </p>
+  <main>
+    <section class="section" id="home">
+      <div class="panel hero-panel reveal visible">
+        <div>
+          <div class="eyebrow">Student • Athlete • Explorer</div>
+          <h1>Hi, I’m Nathan Zhang.</h1>
+          <p class="lead">
+            I’m a student who loves being active, learning new things, and pushing myself through
+            sports and challenges. My interests take me from the pool to the soccer field, from
+            sailing on the water to playing hockey on the ice.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#contact">Reach Out</a>
+            <a class="button secondary" href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School</a>
+          </div>
+    <section class="hero" id="about">
+      <div class="hero-main">
+        <span class="eyebrow">Personal Website</span>
+        <h1>Hey, I’m Nathan Zhang.</h1>
+        <p class="lead">
+          I’m a student at
+          <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>.
+          I enjoy staying active, trying new challenges, and spending time doing things that push me
+          to improve.
+        </p>
+        <p class="lead">
+          In my free time, I love swimming, playing soccer, sailing, and hockey. Each one gives me
+          a different way to compete, learn, and have fun.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="mailto:nathandyzh@gmail.com">Email Me</a>
+          <a class="button secondary" href="https://www.shs.org/" target="_blank" rel="noreferrer">Visit My School</a>
+        </div>
+      </div>
 
-    <p>
-      Some of my favorite hobbies are swimming, playing soccer, sailing, and hockey.
-      Each one gives me a different way to learn, compete, and have fun.
-    </p>
-    <p>
-      If you’d like to reach out to me, feel free to send me an email at
-      <a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a>.
-    </p>
+        <div class="hero-side">
+          <div class="stat">
+            <span>Current Focus</span>
+            <strong>Building skills, staying active, and enjoying every challenge.</strong>
+          </div>
+          <div class="mini-card">
+            I go to <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
+            where I continue to learn, grow, and explore what I care about most.
+          </div>
+      <aside class="hero-side">
+        <div class="side-card">
+          <small>School</small>
+          <p>Currently attending Shady Hill School in Cambridge, Massachusetts.</p>
+        </div>
+        <div class="side-card">
+          <small>Reach Out</small>
+          <p><a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a></p>
+        </div>
+        <div class="scroll-note">Scroll to see more</div>
+      </div>
+      </aside>
+    </section>
 
-    <p class="footer">
-      Thanks for visiting my page and learning a little more about me.
-    </p>
+    <section class="section" id="hobbies">
+      <div class="panel section-panel reveal">
+    <div class="grid">
+      <section class="section reveal" id="hobbies">
+        <div class="section-header">
+          <h2>What I Love Doing</h2>
+          <h2>Hobbies</h2>
+          <p>
+            These hobbies each bring a different kind of energy into my life. Together they help me
+            stay disciplined, adventurous, competitive, and connected with other people.
+            Sports and outdoor activities are a big part of my life. They help me stay focused,
+            work with others, and keep improving every day.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+        <div class="hobby-list">
+          <article class="hobby">
+            <small>01</small>
+            <h3>Swimming</h3>
+            <p>Swimming teaches focus and consistency, and I enjoy the feeling of improving through practice and effort.</p>
+            <p>I like the discipline and consistency that swimming builds, and I enjoy the challenge of improving over time.</p>
+          </article>
+          <article class="card">
+          <article class="hobby">
+            <small>02</small>
+            <h3>Soccer</h3>
+            <p>Soccer is one of my favorite team sports because it combines speed, strategy, and teamwork.</p>
+            <p>Soccer is one of my favorite ways to compete, move fast, and be part of a team.</p>
+          </article>
+          <article class="card">
+          <article class="hobby">
+            <small>03</small>
+            <h3>Sailing</h3>
+            <p>Sailing gives me a chance to think, adapt, and enjoy being outdoors while working with the wind and water.</p>
+            <p>Sailing gives me a chance to think strategically and enjoy being outdoors on the water.</p>
+          </article>
+          <article class="card">
+          <article class="hobby">
+            <small>04</small>
+            <h3>Hockey</h3>
+            <p>Hockey is fast, exciting, and intense, and I love the energy that comes with playing on the ice.</p>
+            <p>Hockey is exciting and intense, and I love the speed and energy that come with it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+      </section>
+
+    <section class="section" id="school">
+      <div class="panel section-panel reveal">
+      <section class="section reveal" id="school">
+        <div class="section-header">
+          <h2>School & Community</h2>
+          <h2>School</h2>
+          <p>
+            School is a big part of who I am. It’s where I learn new ideas, build friendships, and
+            keep growing both in and out of the classroom.
+            I go to
+            <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
+            where I continue to learn, grow, and be part of a strong community.
+          </p>
+        </div>
+
+        <div class="school-layout">
+          <article class="school-card">
+            <h3>Shady Hill School</h3>
+            <p>
+              I attend <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>.
+              It’s a place that supports curiosity, growth, and community, and it plays an important role in my life.
+            </p>
+          </article>
+      </section>
+
+          <article class="contact-card" id="contact">
+            <h3>Reach Out</h3>
+            <p>
+              If you want to contact me, the easiest way is by email. You can also visit my school’s website below.
+            </p>
+            <div class="contact-list">
+              <div class="contact-row">
+                <strong>Email</strong>
+                <a href="mailto:nathan@example.com">nathan@example.com</a>
+              </div>
+              <div class="contact-row">
+                <strong>School Website</strong>
+                <a href="https://www.shs.org/" target="_blank" rel="noreferrer">www.shs.org</a>
+              </div>
+            </div>
+          </article>
+      <section class="section reveal" id="contact">
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>
+            If you’d like to reach out to me, feel free to send me an email or visit my school’s website.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Email</h3>
+            <p><a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a></p>
+          </div>
+          <div class="contact-box">
+            <h3>School Website</h3>
+            <p><a href="https://www.shs.org/" target="_blank" rel="noreferrer">www.shs.org</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="footer">Built for Nathan Zhang.</p>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll(".reveal");
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+    }, { threshold: 0.18 });
+
+    panels.forEach((panel, index) => {
+      if (index === 0) {
+        panel.classList.add("visible");
+        return;
+      }
+      observer.observe(panel);
+    });
+    reveals.forEach((section) => observer.observe(section));
+  </script>
 </body>
 </html>
