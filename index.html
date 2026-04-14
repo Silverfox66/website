@@ -1,10 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>WEBSITE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathan Zhang</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --card: rgba(255, 252, 247, 0.9);
+      --text: #1f2a2e;
+      --accent: #0f6b6f;
+      --accent-dark: #0a4f52;
+      --border: rgba(15, 107, 111, 0.18);
+      --shadow: 0 24px 60px rgba(31, 42, 46, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(15, 107, 111, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(218, 167, 84, 0.2), transparent 28%),
+        linear-gradient(135deg, #f8f4ed, var(--bg));
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 40px 28px;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      font-size: 1.1rem;
+      color: #44555b;
+    }
+
+    p {
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    strong {
+      color: var(--accent-dark);
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .hobbies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 24px 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hobbies li {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .footer {
+      margin-top: 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.98rem;
+      color: #52646a;
+    }
+  </style>
 </head>
 <body>
-<h1>HELL0</h1>
-<p>Hello, world.</p>
-</body> 
+  <main class="card">
+    <p class="subtitle">Personal introduction</p>
+    <h1>Nathan Zhang</h1>
+
+    <p>
+      Hi, I’m <strong>Nathan Zhang</strong>. I’m a student at
+      <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
+      and I enjoy staying active, trying new challenges, and spending time outdoors.
+    </p>
+
+    <p>
+      Some of my favorite hobbies are swimming, playing soccer, sailing, and hockey.
+      Each one gives me a different way to learn, compete, and have fun.
+    </p>
+
+    <ul class="hobbies">
+      <li>Swimming</li>
+      <li>Soccer</li>
+      <li>Sailing</li>
+      <li>Hockey</li>
+    </ul>
+
+    <p>
+      If you’d like to reach out to me, feel free to send me an email at
+      <a href="mailto:nathan@example.com">nathan@example.com</a>.
+    </p>
+
+    <p class="footer">
+      Thanks for visiting my page and learning a little more about me.
+    </p>
+  </main>
+</body>
 </html>
