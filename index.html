@@ -1,131 +1,703 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
-<title>Nathan Zhang</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nathan Zhang</title>
   <style>
     :root {
-      --bg: #f4efe6;
-      --card: rgba(255, 252, 247, 0.9);
-      --text: #1f2a2e;
-      --accent: #0f6b6f;
-      --accent-dark: #0a4f52;
-      --border: rgba(15, 107, 111, 0.18);
-      --shadow: 0 24px 60px rgba(31, 42, 46, 0.12);
+      --bg: #02070b;
+      --bg-mid: #07131a;
+      --bg-soft: #0d1f28;
+      --panel: rgba(12, 25, 32, 0.72);
+      --panel-strong: rgba(14, 30, 38, 0.9);
+      --text: #eef7fb;
+      --muted: #94a8b4;
+      --line: rgba(166, 225, 240, 0.14);
+      --glow: rgba(111, 228, 255, 0.22);
+      --cyan: #85ecff;
+      --blue: #76a8ff;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "Avenir Next", Avenir, "Helvetica Neue", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(15, 107, 111, 0.18), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(218, 167, 84, 0.2), transparent 28%),
-        linear-gradient(135deg, #f8f4ed, var(--bg));
-      display: grid;
-      place-items: center;
-      padding: 32px 16px;
+        radial-gradient(circle at 20% 12%, rgba(118, 168, 255, 0.16), transparent 22%),
+        radial-gradient(circle at 82% 8%, rgba(133, 236, 255, 0.13), transparent 24%),
+        linear-gradient(180deg, #010508 0%, var(--bg) 24%, var(--bg-mid) 62%, var(--bg-soft) 100%);
+      overflow-x: hidden;
     }
 
-    .card {
-      width: min(760px, 100%);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 40px 28px;
-      backdrop-filter: blur(6px);
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .subtitle {
-      margin: 0 0 28px;
-      font-size: 1.1rem;
-      color: #44555b;
-    }
-
-    p {
-      margin: 0 0 18px;
-      font-size: 1.08rem;
-      line-height: 1.75;
-    }
-
-    strong {
-      color: var(--accent-dark);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 58px 58px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 92%);
     }
 
     a {
-      color: var(--accent);
-      font-weight: 700;
+      color: var(--cyan);
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
     }
 
-    .hobbies {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin: 24px 0 28px;
-      padding: 0;
-      list-style: none;
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 24px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(3, 10, 14, 0.7);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+      z-index: 20;
     }
 
-    .hobbies li {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px 16px;
-      text-align: center;
-      font-size: 1rem;
+    .nav-title {
+      margin: 0;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.94rem;
       font-weight: 700;
-      color: var(--accent-dark);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 20px 50px;
+    }
+
+    .hero-shell {
+      width: min(1120px, 100%);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(17, 32, 41, 0.88), rgba(11, 24, 31, 0.82));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-main {
+      padding: 46px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -20% auto auto -10%;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(118, 168, 255, 0.22), transparent 64%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid rgba(133, 236, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(133, 236, 255, 0.07);
+      color: var(--cyan);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(3.5rem, 8vw, 6.6rem);
+      line-height: 0.92;
+      max-width: 680px;
+      position: relative;
+    }
+
+    .hero-copy {
+      margin-top: 22px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.85;
+      position: relative;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      position: relative;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .button.primary {
+      color: #041015;
+      background: linear-gradient(135deg, var(--cyan), #d7fbff);
+      box-shadow: 0 10px 34px var(--glow);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .hero-side {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+      background:
+        radial-gradient(circle at top right, rgba(133, 236, 255, 0.1), transparent 34%),
+        linear-gradient(180deg, rgba(17, 32, 41, 0.9), rgba(11, 24, 31, 0.84));
+    }
+
+    .side-card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .side-card small {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .side-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .scrolly-section {
+      position: relative;
+      min-height: 240vh;
+      padding: 0 20px;
+    }
+
+    .scrolly-stage {
+      position: sticky;
+      top: 88px;
+      min-height: calc(100vh - 104px);
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .section-copy {
+      padding: 12px 8px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.95;
+      max-width: 420px;
+    }
+
+    .section-copy p {
+      max-width: 460px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.85;
+    }
+
+    .bubble-stack {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1400px;
+    }
+
+    .bubble {
+      position: absolute;
+      width: min(480px, 92%);
+      padding: 28px 28px 30px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(19, 38, 48, 0.92), rgba(12, 26, 33, 0.88));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      transform: translateY(120px) scale(0.88) rotateX(16deg);
+      transition:
+        opacity 650ms ease,
+        transform 850ms cubic-bezier(0.2, 1, 0.22, 1),
+        border-color 300ms ease,
+        box-shadow 300ms ease;
+    }
+
+    .bubble::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -25% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(133, 236, 255, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .bubble.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateX(0deg);
+    }
+
+    .bubble.accent {
+      border-color: rgba(133, 236, 255, 0.26);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(133, 236, 255, 0.05);
+    }
+
+    .bubble.b1 { transform-origin: center bottom; }
+    .bubble.b2 { transform-origin: center bottom; }
+    .bubble.b3 { transform-origin: center bottom; }
+    .bubble.b4 { transform-origin: center bottom; }
+
+    .bubble.visible.b1 { transform: translate(-110px, -110px) scale(0.94) rotate(-7deg); }
+    .bubble.visible.b2 { transform: translate(120px, -18px) scale(1) rotate(4deg); }
+    .bubble.visible.b3 { transform: translate(-90px, 120px) scale(0.96) rotate(6deg); }
+    .bubble.visible.b4 { transform: translate(105px, 210px) scale(0.92) rotate(-5deg); }
+
+    .bubble small {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bubble h3 {
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+    }
+
+    .bubble p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .contact-section {
+      min-height: 120vh;
+      padding: 40px 20px 80px;
+    }
+
+    .contact-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-intro,
+    .contact-cards {
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(17, 32, 41, 0.88), rgba(11, 24, 31, 0.82));
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .contact-intro p {
+      margin: 18px 0 0;
+      max-width: 420px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+
+    .contact-cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .contact-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
     .footer {
-      margin-top: 10px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 0.98rem;
-      color: #52646a;
+      width: min(1120px, calc(100% - 40px));
+      margin: 24px auto 0;
+      padding-bottom: 24px;
+      color: #7d909c;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero-shell,
+      .scrolly-stage,
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .scrolly-section {
+        min-height: auto;
+        padding: 30px 16px;
+      }
+
+      .scrolly-stage {
+        position: static;
+        min-height: auto;
+        gap: 20px;
+      }
+
+      .bubble-stack {
+        min-height: auto;
+        display: grid;
+        gap: 16px;
+        perspective: none;
+      }
+
+      .bubble,
+      .bubble.visible,
+      .bubble.visible.b1,
+      .bubble.visible.b2,
+      .bubble.visible.b3,
+      .bubble.visible.b4 {
+        position: relative;
+        width: 100%;
+        transform: none;
+        opacity: 1;
+      }
+
+      .contact-section {
+        min-height: auto;
+        padding: 20px 16px 50px;
+      }
+
+      .contact-card {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        top: 10px;
+        width: calc(100% - 14px);
+        border-radius: 24px;
+        padding: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding: 110px 12px 30px;
+      }
+
+      .hero-main,
+      .contact-intro,
+      .contact-cards {
+        padding: 24px;
+      }
+
+      .hero-side {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+      }
     }
   </style>
 </head>
-  <main class="card">
-    <p class="subtitle">Personal introduction</p>
-    <h1>Nathan Zhang</h1>
+<body>
+  <header class="nav">
+    <p class="nav-title">Nathan Zhang</p>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#school">School</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <p>
-      Hi, I’m <strong>Nathan Zhang</strong>. I’m a student at
-      <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
-      and I enjoy staying active, trying new challenges, and spending time outdoors.
-    </p>
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-shell">
+        <div class="hero-main">
+          <span class="eyebrow">Personal Website</span>
+          <h1>Hi, I’m Nathan Zhang.</h1>
+          <p class="hero-copy">
+            I’m a student at
+            <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>.
+            I enjoy staying active, trying new challenges, and building skills through the things I love doing most.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:nathandyzh@gmail.com">Email Me</a>
+            <a class="button secondary" href="https://www.shs.org/" target="_blank" rel="noreferrer">Visit My School</a>
+          </div>
+        </div>
 
-    <p>
-      Some of my favorite hobbies are swimming, playing soccer, sailing, and hockey.
-      Each one gives me a different way to learn, compete, and have fun.
-    </p>
-    <p>
-      If you’d like to reach out to me, feel free to send me an email at
-      <a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a>.
-    </p>
+        <aside class="hero-side">
+          <div class="side-card">
+            <small>Current Focus</small>
+            <p>Learning, improving, and pushing myself through school, sports, and new experiences.</p>
+          </div>
+          <div class="side-card">
+            <small>Based In</small>
+            <p>Cambridge, Massachusetts.</p>
+          </div>
+          <div class="side-card">
+            <small>Contact</small>
+            <p><a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-    <p class="footer">
-      Thanks for visiting my page and learning a little more about me.
-    </p>
+    <section class="scrolly-section" id="hobbies">
+      <div class="scrolly-stage">
+        <div class="section-copy">
+          <span class="section-kicker">What I Enjoy</span>
+          <h2>My hobbies appear as you scroll.</h2>
+          <p>
+            I wanted this part of the website to feel more alive, so each paragraph now shows up like
+            a floating bubble card instead of one flat block of text.
+          </p>
+        </div>
+
+        <div class="bubble-stack">
+          <article class="bubble b1 reveal accent">
+            <small>Swimming</small>
+            <h3>Focus in motion.</h3>
+            <p>Swimming teaches discipline, consistency, and patience, and I enjoy the feeling of getting better through practice.</p>
+          </article>
+
+          <article class="bubble b2 reveal">
+            <small>Soccer</small>
+            <h3>Fast and competitive.</h3>
+            <p>Soccer is one of my favorite ways to move, compete, and work with teammates toward the same goal.</p>
+          </article>
+
+          <article class="bubble b3 reveal">
+            <small>Sailing</small>
+            <h3>Thoughtful and outdoors.</h3>
+            <p>Sailing gives me a chance to think strategically, adapt to changing conditions, and enjoy being out on the water.</p>
+          </article>
+
+          <article class="bubble b4 reveal">
+            <small>Hockey</small>
+            <h3>Energy on the ice.</h3>
+            <p>Hockey is exciting and intense, and I love its speed, physicality, and nonstop action.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scrolly-section" id="school">
+      <div class="scrolly-stage">
+        <div class="section-copy">
+          <span class="section-kicker">School</span>
+          <h2>Where I learn and grow.</h2>
+          <p>
+            School is a big part of my life. It’s where I explore new ideas, challenge myself, and
+            spend time in a strong community.
+          </p>
+        </div>
+
+        <div class="bubble-stack">
+          <article class="bubble b1 reveal accent">
+            <small>Shady Hill</small>
+            <h3>Cambridge, MA.</h3>
+            <p>
+              I go to <a href="https://www.shs.org/" target="_blank" rel="noreferrer">Shady Hill School in Cambridge, MA</a>,
+              where I continue to learn, grow, and build meaningful connections.
+            </p>
+          </article>
+
+          <article class="bubble b2 reveal">
+            <small>Community</small>
+            <h3>A place to keep improving.</h3>
+            <p>My school gives me opportunities to strengthen my interests, work with others, and become a better student and teammate.</p>
+          </article>
+
+          <article class="bubble b3 reveal">
+            <small>Mindset</small>
+            <h3>Curious and active.</h3>
+            <p>I try to bring the same energy to school that I bring to sports: focus, effort, curiosity, and a willingness to improve.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-shell">
+        <div class="contact-intro">
+          <span class="section-kicker">Contact</span>
+          <h2>Reach out anytime.</h2>
+          <p>
+            If you’d like to contact me, the easiest way is by email. You can also visit my school’s
+            website using the link below.
+          </p>
+        </div>
+
+        <div class="contact-cards">
+          <article class="contact-card reveal">
+            <h3>Email</h3>
+            <p><a href="mailto:nathandyzh@gmail.com">nathandyzh@gmail.com</a></p>
+          </article>
+          <article class="contact-card reveal">
+            <h3>School Website</h3>
+            <p><a href="https://www.shs.org/" target="_blank" rel="noreferrer">www.shs.org</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">Built for Nathan Zhang.</p>
   </main>
+
+  <script>
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: "0px 0px -8% 0px"
+    });
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
