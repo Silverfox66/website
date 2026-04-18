@@ -53,6 +53,10 @@
       mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 92%);
     }
 
+    body.bubble-focus {
+      overflow: hidden;
+    }
+
     a {
       color: var(--cyan);
       text-decoration-thickness: 2px;
@@ -76,6 +80,7 @@
       backdrop-filter: blur(14px);
       box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
       z-index: 20;
+      transition: filter 300ms ease, opacity 300ms ease;
     }
 
     .nav-title {
@@ -107,6 +112,28 @@
     main {
       position: relative;
       z-index: 1;
+      transition: filter 320ms ease, transform 320ms ease;
+    }
+
+    body.bubble-focus main,
+    body.bubble-focus .nav {
+      filter: blur(12px);
+    }
+
+    .bubble-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 6, 9, 0.38);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 320ms ease;
+      z-index: 30;
+    }
+
+    body.bubble-focus .bubble-overlay {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .hero {
@@ -260,6 +287,15 @@
       font-size: 1rem;
     }
 
+    .side-card img {
+      width: 100%;
+      height: auto;
+      margin-top: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: block;
+    }
+
     .scrolly-section {
       position: relative;
       min-height: 240vh;
@@ -313,6 +349,7 @@
       align-items: center;
       justify-content: center;
       perspective: 1400px;
+      isolation: isolate;
     }
 
     .bubble {
@@ -326,12 +363,15 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(20px);
       opacity: 0;
+      cursor: pointer;
       transform: translateY(120px) scale(0.88) rotateX(16deg);
       transition:
         opacity 650ms ease,
         transform 850ms cubic-bezier(0.2, 1, 0.22, 1),
         border-color 300ms ease,
-        box-shadow 300ms ease;
+        box-shadow 300ms ease,
+        z-index 0ms linear 0ms;
+      z-index: 1;
     }
 
     .bubble::before {
@@ -365,6 +405,78 @@
     .bubble.visible.b3 { transform: translate(-90px, 120px) scale(0.96) rotate(6deg); }
     .bubble.visible.b4 { transform: translate(105px, 210px) scale(0.92) rotate(-5deg); }
 
+    @media (hover: hover) and (pointer: fine) {
+      body:not(.bubble-focus) .bubble.visible:hover {
+        z-index: 8;
+        border-color: rgba(133, 236, 255, 0.34);
+        box-shadow: 0 36px 90px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(133, 236, 255, 0.1);
+      }
+
+      body:not(.bubble-focus) .bubble.visible.b1:hover {
+        transform: translate(-110px, -150px) scale(1.08) rotate(-4deg);
+      }
+
+      body:not(.bubble-focus) .bubble.visible.b2:hover {
+        transform: translate(120px, -56px) scale(1.1) rotate(2deg);
+      }
+
+      body:not(.bubble-focus) .bubble.visible.b3:hover {
+        transform: translate(-90px, 84px) scale(1.08) rotate(4deg);
+      }
+
+      body:not(.bubble-focus) .bubble.visible.b4:hover {
+        transform: translate(105px, 170px) scale(1.07) rotate(-3deg);
+      }
+    }
+
+    .bubble.active {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: min(680px, calc(100vw - 32px));
+      max-height: min(76vh, 720px);
+      overflow: auto;
+      opacity: 1;
+      z-index: 50;
+      border-color: rgba(133, 236, 255, 0.36);
+      box-shadow: 0 44px 120px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(133, 236, 255, 0.12);
+      transform: translate(-50%, -50%) scale(1.05) rotate(0deg) !important;
+    }
+
+    .bubble-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 1.4rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease, background 220ms ease;
+      transform: scale(0.9);
+    }
+
+    .bubble-close:hover,
+    .bubble-close:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1);
+    }
+
+    .bubble.active .bubble-close {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
     .bubble small {
       display: inline-block;
       margin-bottom: 12px;
@@ -378,6 +490,7 @@
     .bubble h3 {
       margin-bottom: 12px;
       font-size: 1.6rem;
+      padding-right: 48px;
     }
 
     .bubble p {
@@ -495,6 +608,11 @@
         opacity: 1;
       }
 
+      .bubble.active {
+        width: min(680px, calc(100vw - 24px));
+        transform: translate(-50%, -50%) scale(1.02) !important;
+      }
+
       .contact-section {
         min-height: auto;
         padding: 20px 16px 50px;
@@ -533,10 +651,16 @@
       h1 {
         font-size: 3.2rem;
       }
+
+      .bubble {
+        padding: 24px 22px 24px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="bubble-overlay" id="bubbleOverlay" aria-hidden="true"></div>
+
   <header class="nav">
     <p class="nav-title">Nathan Zhang</p>
     <nav class="nav-links">
@@ -571,8 +695,8 @@
           </div>
           <div class="side-card">
             <small>Based In</small>
-            <p><a href="https://www.google.com/search?q=boston&rlz=1C5XOFX_enUS1158US1158&oq=boston&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyCggBEC4YsQMYgAQyBggCEEUYOzIJCAMQIxgnGPAFMgoIBBAAGLEDGIAEMgYIBRBFGD0yBggGEEUYPDIGCAcQRRg80gEHODU3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8">Boston, MA</a></p>
-            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRQRNhWEF6StdN0KsUd3BFEoJbRRPT7r4bbGeAsbrVANfPScZ9skCdOIVZHhk0L8VRuUSDnPfuoHnf3Tq388OScFWY&s=19" style="width: 350px; height: auto;" alt="Boston Skyline">
+            <p><a href="https://www.google.com/search?q=boston&rlz=1C5XOFX_enUS1158US1158&oq=boston&gs_lcrp=EgZjaHJvbWUqBwgAEAAYjwIyBwgAEAAYjwIyCggBEC4YsQMYgAQyBggCEEUYOzIJCAMQIxgnGPAFMgoIBBAAGLEDGIAEMgYIBRBFGD0yBggGEEUYPDIGCAcQRRg80gEHODU3ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" rel="noreferrer">Boston, MA</a></p>
+            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRQRNhWEF6StdN0KsUd3BFEoJbRRPT7r4bbGeAsbrVANfPScZ9skCdOIVZHhk0L8VRuUSDnPfuoHnf3Tq388OScFWY&s=19" alt="Boston skyline">
           </div>
         </aside>
       </div>
@@ -585,25 +709,29 @@
         </div>
 
         <div class="bubble-stack">
-          <article class="bubble b1 reveal accent">
+          <article class="bubble b1 reveal accent" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Swimming</small>
             <h3>Focus in motion.</h3>
             <p>Swimming teaches discipline, consistency, and patience, and I enjoy the feeling of getting better through practice.</p>
           </article>
 
-          <article class="bubble b2 reveal">
+          <article class="bubble b2 reveal" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Soccer</small>
             <h3>Fast and competitive.</h3>
             <p>Soccer is one of my favorite ways to move, compete, and work with teammates toward the same goal.</p>
           </article>
 
-          <article class="bubble b3 reveal">
+          <article class="bubble b3 reveal" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Sailing</small>
             <h3>Thoughtful and outdoors.</h3>
             <p>Sailing gives me a chance to think strategically, adapt to changing conditions, and enjoy being out on the water.</p>
           </article>
 
-          <article class="bubble b4 reveal">
+          <article class="bubble b4 reveal" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Hockey</small>
             <h3>Energy on the ice.</h3>
             <p>Hockey is exciting and intense, and I love its speed, physicality, and nonstop action.</p>
@@ -624,7 +752,8 @@
         </div>
 
         <div class="bubble-stack">
-          <article class="bubble b1 reveal accent">
+          <article class="bubble b1 reveal accent" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Shady Hill</small>
             <h3>Cambridge, MA.</h3>
             <p>
@@ -633,13 +762,15 @@
             </p>
           </article>
 
-          <article class="bubble b2 reveal">
+          <article class="bubble b2 reveal" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Community</small>
             <h3>A place to keep improving.</h3>
             <p>My school gives me opportunities to strengthen my interests, work with others, and become a better student and teammate.</p>
           </article>
 
-          <article class="bubble b3 reveal">
+          <article class="bubble b3 reveal" tabindex="0" role="button" aria-expanded="false">
+            <button class="bubble-close" type="button" aria-label="Close bubble">&times;</button>
             <small>Mindset</small>
             <h3>Curious and active.</h3>
             <p>I try to bring the same energy to school that I bring to sports: focus, effort, curiosity, and a willingness to improve.</p>
@@ -671,7 +802,7 @@
           <article class="contact-card reveal">
             <h3>GitHub</h3>
             <p><a href="https://github.com/Silverfox66" target="_blank" rel="noreferrer">Github</a></p>
-          </article>          
+          </article>
         </div>
       </div>
     </section>
@@ -681,6 +812,9 @@
 
   <script>
     const reveals = document.querySelectorAll(".reveal");
+    const bubbles = document.querySelectorAll(".bubble");
+    const bubbleOverlay = document.getElementById("bubbleOverlay");
+    let activeBubble = null;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -694,6 +828,86 @@
     });
 
     reveals.forEach((item) => observer.observe(item));
+
+    function openBubble(bubble) {
+      if (window.innerWidth <= 920) {
+        return;
+      }
+
+      if (activeBubble && activeBubble !== bubble) {
+        closeBubble(activeBubble);
+      }
+
+      activeBubble = bubble;
+      bubble.classList.add("active");
+      bubble.setAttribute("aria-expanded", "true");
+      document.body.classList.add("bubble-focus");
+    }
+
+    function closeBubble(bubble = activeBubble) {
+      if (!bubble) {
+        return;
+      }
+
+      bubble.classList.remove("active");
+      bubble.setAttribute("aria-expanded", "false");
+
+      if (activeBubble === bubble) {
+        activeBubble = null;
+      }
+
+      document.body.classList.remove("bubble-focus");
+    }
+
+    bubbles.forEach((bubble) => {
+      const closeButton = bubble.querySelector(".bubble-close");
+
+      bubble.addEventListener("click", (event) => {
+        if (event.target.closest(".bubble-close") || event.target.closest("a")) {
+          return;
+        }
+
+        if (activeBubble === bubble) {
+          return;
+        }
+
+        openBubble(bubble);
+      });
+
+      bubble.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          if (activeBubble === bubble) {
+            closeBubble(bubble);
+          } else {
+            openBubble(bubble);
+          }
+        }
+
+        if (event.key === "Escape" && activeBubble === bubble) {
+          closeBubble(bubble);
+        }
+      });
+
+      closeButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        closeBubble(bubble);
+      });
+    });
+
+    bubbleOverlay.addEventListener("click", () => closeBubble());
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeBubble();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 920) {
+        closeBubble();
+      }
+    });
   </script>
 </body>
 </html>
